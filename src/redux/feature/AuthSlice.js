@@ -44,9 +44,9 @@ export const loginUser = createAsyncThunk(
         },
       });
 
+      const data = await response.json();
       if (response.status === 200) {
         toast.success("Login Successful.")
-        const data = await response.json();
         console.log(data.role)
         dispatch(setLogin({
           role: data.role,
@@ -54,7 +54,12 @@ export const loginUser = createAsyncThunk(
         }));
         localStorage.setItem("token", data.token); // Store token in localStorage
         localStorage.setItem("role", data.role); // Store token in localStorage
-      } else {
+      } else if(response.status===400){
+        dispatch(setLoading({
+          isLoading:false
+        }))
+        toast.error(data.message)
+      }else{
         return rejectWithValue("Login failed");
       }
       dispatch(setLoading({

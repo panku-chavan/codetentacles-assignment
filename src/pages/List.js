@@ -53,12 +53,14 @@ export default function List() {
   ];
   const dispatch = useDispatch();
   const { usersList, currentPage, perPage, lastPage } = useSelector((state) => state.usersSlice);
-  console.log(usersList,currentPage,perPage);
+  // console.log(usersList,currentPage,perPage);
  
 
   useEffect(() => {
+    if(usersList.length===0){
       dispatch(getUserList({ page: 1, perPage: 10 }));
-    }, [dispatch]);
+    }
+    }, [dispatch,usersList.length]);
   
     const handlePageChange = (event, newPage) => {
       dispatch(getUserList({ page: newPage, perPage }));

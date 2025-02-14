@@ -78,6 +78,7 @@ export const addUser = createAsyncThunk(
       if (response.status === 200) {
         console.log(data);
         dispatch(setUserState());
+        dispatch(getUserList(1,10))
         toast.success("User added to list.");
       } else if(response.status===422){
 

@@ -15,9 +15,12 @@ export default function Product() {
   // console.log(productList);
 
   useEffect(() => {
-    dispatch(getProducstList({ page: 1, perPage: 10 }));
+    if(productList.length===0){
+
+      dispatch(getProducstList({ page: 1, perPage: 10 }));
+    }
     dispatch(reseteProductState());
-  }, [dispatch]);
+  }, [dispatch,productList.length]);
 
   const handlePageChange = (event, newPage) => {
     dispatch(getProducstList({ page: newPage, perPage }));
