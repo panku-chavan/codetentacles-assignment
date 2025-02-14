@@ -24,6 +24,11 @@ A full-stack application with token-based authentication, featuring separate das
 - All CRUD operations (GET, POST, DELETE) are bound to backend endpoints.
 - Field validations implemented for forms (e.g., required fields, email format).
 
+## Loader and toast 
+
+- added loader.
+- added toast notification.
+
 ## Installation
 1. Clone the repository:
    ```bash
