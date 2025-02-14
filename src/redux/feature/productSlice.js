@@ -30,7 +30,7 @@ export const getProducstList = createAsyncThunk(
 
       if (response.ok) {
         const data = await response.json();
-        if(data.status==="Token is Invalid"){
+        if(data.status==="Token is Invalid"||data.status==="Token is Expired"){
           // alert("Token is expired, please login again.");
           console.log("Token is expired, please login again.")
           toast.error("Token i expired!, Login again.")

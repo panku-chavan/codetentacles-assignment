@@ -19,7 +19,7 @@ export default function Addproduct() {
      if(isSuccess){
         navigate("/Product")
      }
-    },[isSuccess])
+    },[isSuccess,navigate])
 
     const validateForm = () => {
         let isValid = true;
