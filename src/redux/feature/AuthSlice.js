@@ -45,6 +45,12 @@ export const loginUser = createAsyncThunk(
       });
 
       const data = await response.json();
+      if(response.status===422){
+        dispatch(setLoading({
+          isLoading:false
+        }))
+        toast.error(data.message[0])
+      }
       if (response.status === 200) {
         toast.success("Login Successful.")
         console.log(data.role)
